@@ -1,6 +1,5 @@
 package expedia;
 
-import browsers.BrowsersEnum;
 import countries.FranceFactory;
 import countries.NetherlandsFactory;
 import drivers.DriverFactory;

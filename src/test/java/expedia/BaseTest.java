@@ -9,9 +9,7 @@ import org.testng.annotations.*;
 
 public class BaseTest {
 
-    protected DriverManger driverManger;
-    protected WebDriver driverParam;
-    ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     protected FranceFactory france;
     protected NetherlandsFactory netherlands;
 
@@ -19,9 +17,8 @@ public class BaseTest {
     @Parameters({"browser"})
     public void setup(@Optional String browser) {
         DriverFactory driverFactory = new DriverFactory();
-        this.driverManger = driverFactory.get(getBrowser(browser));
-        this.driverParam = this.driverManger.getDriver();
-        driver.set(driverParam);
+        DriverManger driverManger = driverFactory.get(getBrowser(browser));
+        driver.set(driverManger.getDriver());
         this.france = new FranceFactory(driver);
         this.netherlands = new NetherlandsFactory(driver);
     }
